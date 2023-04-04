@@ -9,7 +9,6 @@ public class Manager : MonoBehaviour
 
     //移動スピード
     public int MoveSpeed = 5;
-    public int FallSpeed = 8;
 
     Vector2 position;
 
@@ -25,15 +24,24 @@ public class Manager : MonoBehaviour
     private void Update()
     {
         position = FlowerPot.transform.position;
+        //Debug.Log((position.x < LEFTMOVE_LIMIT_POS) + "," + (position.x > RIGHTMOVE_LIMIT_POS));
 
         //移動
-        if (Input.GetKey("left"))
+        //!で反転
+        if (!(position.x < LEFTMOVE_LIMIT_POS))
         {
-            position.x -= MoveSpeed * Time.deltaTime;
+            if (Input.GetKey("left"))
+            {
+                position.x -= MoveSpeed * Time.deltaTime;
+            }
         }
-        if (Input.GetKey("right"))
+
+        if(!(position.x > RIGHTMOVE_LIMIT_POS))
         {
-            position.x += MoveSpeed * Time.deltaTime;
+            if (Input.GetKey("right"))
+            {
+                position.x += MoveSpeed * Time.deltaTime;
+            }
         }
 
         FlowerPot.transform.position = position;
