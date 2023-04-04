@@ -4,23 +4,35 @@ using UnityEngine;
 
 public class WaterController : MonoBehaviour
 {
-    private float FallSpeed = -3f;
+    private float DropFallSpeed = -3f;
     private WaterGeneraeter w;
+
+    //仮のマネージャー格納変数
+    public GameObject manager;
 
     const float DeletePos = -6f;
 
     private void Start()
     {
+        //ゲッター関数で取得したい
         /*
-        w = GetComponent<WaterGeneraeter>();
-        FallSpeed = w.FallSpeed;
-        Debug.Log(FallSpeed);
+        w = new WaterGeneraeter();
+        DropFallSpeed = w.GetFallSpeed();
         */
+
+        //仮
+        manager = GameObject.Find("GameManager"); //重い
+        w = manager.GetComponent<WaterGeneraeter>();
+        DropFallSpeed = w.GetFallSpeed();
+
+        Debug.Log("DropFallSpeed: " + DropFallSpeed);
     }
 
     private void Update()
     {
-        transform.Translate(0f, FallSpeed * Time.deltaTime, 0f);
+        //DropFallSpeed = w.GetFallSpeed();
+
+        transform.Translate(0f, DropFallSpeed * Time.deltaTime, 0f);
 
         if (transform.position.y < DeletePos)
         {
@@ -33,4 +45,12 @@ public class WaterController : MonoBehaviour
         Debug.Log("当たり判定");
         Destroy(gameObject);
     }
+
+
+    /*
+    public void UpdateFallSpeed()
+    {
+        DropFallSpeed = w.GetFallSpeed();
+    }
+    */
 }

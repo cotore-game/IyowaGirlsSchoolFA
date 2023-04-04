@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaterDropInstance: {fileID: 5744451790271483612, guid: 2ec09543070eab248aeebec24d8814c4, type: 3}
-  FallSpeed: -8
+  FallSpeed: -15
   IntervalTimer: 0.7
   PresentFase: 1
 --- !u!1 &1839303666
